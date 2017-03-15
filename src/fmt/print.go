@@ -191,12 +191,12 @@ func Printf(format string, a ...interface{}) (n int, err error) {
 }
 
 // Sprintf formats according to a format specifier and returns the resulting string.
-func Sprintf(format string, a ...interface{}) string {
+func Sprintf(format string, a ...interface{}) (s string) {
 	p := newPrinter()
 	p.doPrintf(format, a)
-	s := string(p.buf)
+	s = string(p.buf)
 	p.free()
-	return s
+	return
 }
 
 // Errorf formats according to a format specifier and returns the string
@@ -259,12 +259,12 @@ func Println(a ...interface{}) (n int, err error) {
 
 // Sprintln formats using the default formats for its operands and returns the resulting string.
 // Spaces are always added between operands and a newline is appended.
-func Sprintln(a ...interface{}) string {
+func Sprintln(a ...interface{}) (s string) {
 	p := newPrinter()
 	p.doPrintln(a)
-	s := string(p.buf)
+	s = string(p.buf)
 	p.free()
-	return s
+	return
 }
 
 // getField gets the i'th field of the struct value.
