@@ -227,12 +227,12 @@ func Print(a ...interface{}) (n int, err error) {
 
 // Sprint formats using the default formats for its operands and returns the resulting string.
 // Spaces are added between operands when neither is a string.
-func Sprint(a ...interface{}) string {
+func Sprint(a ...interface{}) (s string) {
 	p := newPrinter()
 	p.doPrint(a)
-	s := string(p.buf)
+	s = string(p.buf)
 	p.free()
-	return s
+	return
 }
 
 // These routines end in 'ln', do not take a format string,
